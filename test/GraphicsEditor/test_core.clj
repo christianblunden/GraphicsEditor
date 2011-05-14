@@ -35,4 +35,5 @@
 (facts "about drawing a vertical line on image"
        (let [image [[:O :O :O :O] [:O :O :O :O]]]
          (drawHorizontal image 2 2 3 :A) => (just [[:O :O :O :O] [:O :A :A :O]])
+         (drawHorizontal image 1 1 3 :B) => (just [[:B :B :B :O] [:O :O :O :O]])
          ))
