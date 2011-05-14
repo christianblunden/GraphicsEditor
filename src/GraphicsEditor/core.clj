@@ -49,7 +49,9 @@
   (let [[y x1 x2 colour] args]
     (drawHorizontal image (read-string y) (read-string x1) (read-string x2) (keyword colour))))
 
-(defn showCommand [] nil)
+(defn showCommand [args image]
+  (map println (displayImage image))
+  image)
 
 (def commands {:I createCommand,
                :C clearCommand,

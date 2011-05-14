@@ -69,4 +69,5 @@
 
 (facts "about show command"
        (commands :S) => (exactly showCommand)
+       (showCommand [] [[:A :B] [:C :D]]) => [[:A :B] [:C :D]]
        )
