@@ -66,9 +66,6 @@
        (commands :H) => (exactly horizontalCommand)
        (horizontalCommand ["2" "1" "2" "Y"] [[:O :O] [:O :O]]) => (just [[:O :O] [:Y :Y]]))
 
-(facts "about space predicate"
-       (space? \ ) => true
-       (space? \1) => false)
 
 (facts "about show command"
        (commands :S) => (exactly showCommand)
