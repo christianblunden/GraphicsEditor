@@ -48,3 +48,6 @@
        (commands :I) => (exactly createCommand)
        (createCommand ["3" "2"]) => (just [[:O :O :O] [:O :O :O]])
        )
+
+(facts "about clearing command"
+       (commands :C) => (exactly clearCommand))
