@@ -60,9 +60,7 @@
 (defn processCommands [image]
   (if (not (nil? image))
     (let [[command & args] (read-line)]
-      (recur ((commands (keyword command) args image))))
-    )
-  )
+      (recur ((commands (keyword command) (remove space? args) image))))))
 
 (defn space? [item]
   (blank? (str item)))
