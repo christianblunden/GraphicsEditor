@@ -50,15 +50,18 @@
     (drawHorizontal image (read-string y) (read-string x1) (read-string x2) (keyword colour))))
 
 (defn showCommand [args image]
-  (map println (displayImage image))
+  (println "showing image")
   image)
+
+(defn terminateCommand [args image] nil)
 
 (def commands {:I createCommand,
                :C clearCommand,
                :L colourCommand,
                :V verticalCommand,
                :H horizontalCommand,
-               :S showCommand})
+               :S showCommand,
+               :T terminateCommand})
 
 (defn processCommands [image]
   (let [[rawcommand & rawargs] (read-line)

@@ -71,3 +71,7 @@
        (commands :S) => (exactly showCommand)
        (showCommand [] [[:A :B] [:C :D]]) => [[:A :B] [:C :D]]
        )
+
+(facts "about terminate command"
+       (commands :T) => (exactly terminateCommand)
+       (terminateCommand [] []) => nil?)
