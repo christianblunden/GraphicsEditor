@@ -1,5 +1,20 @@
 (ns GraphicsEditor.core)
 
-(defn doStuff [n]
-  n)
+(defn createRow [length]
+  (vec (repeat length :O)))
+
+(defn createImage [columns rows]
+  (vec (repeat rows (createRow columns))))
+
+(defn clearImage [image]
+  (createImage (count (first image)) (count image)))
+
+(defn drawPixel [image x y colour]
+  (assoc-in image [(- y 1) (- x 1)] colour))
+
+(defn drawVertical [image x y1 y2 colour]
+  (if (<= y1 y2)
+    (recur (drawPixel image x y1  colour) x (inc y1) y2 colour)
+    image))
+
 
