@@ -1,4 +1,5 @@
-(ns GraphicsEditor.core)
+(ns GraphicsEditor.core
+  (:use clojure.string))
 
 (defn createRow [length]
   (vec (repeat length :O)))
@@ -21,3 +22,6 @@
   (if (<= x1 x2)
     (recur (drawPixel image x1 y colour) y (inc x1) x2 colour)
     image))
+
+(defn displayRow [row]
+  (join " " (map name row)))

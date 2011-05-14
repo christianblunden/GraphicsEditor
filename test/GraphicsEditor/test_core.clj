@@ -37,3 +37,8 @@
          (drawHorizontal image 2 2 3 :A) => (just [[:O :O :O :O] [:O :A :A :O]])
          (drawHorizontal image 1 1 3 :B) => (just [[:B :B :B :O] [:O :O :O :O]])
          ))
+
+(facts "about showing an image"
+       (let [image [[:A :B :C] [:D :E :F]]]
+         (displayRow (first image)) => "A B C"
+         ))
