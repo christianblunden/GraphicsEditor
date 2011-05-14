@@ -44,5 +44,7 @@
          (displayImage image) => (just ["A B C" "D E F"])
                   ))
 
-(facts "about controller"
-       (commands :I) => (exactly createImage))
+(facts "about create command"
+       (commands :I) => (exactly createCommand)
+       (createCommand ["3" "2"]) => (just [[:O :O :O] [:O :O :O]])
+       )
