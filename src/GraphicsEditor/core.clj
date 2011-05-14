@@ -48,10 +48,21 @@
   (let [[y x1 x2 colour] args]
     (drawHorizontal image (read-string y) (read-string x1) (read-string x2) (keyword colour))))
 
+(defn showCommand [] nil)
+
 (def commands {:I createCommand,
                :C clearCommand,
                :L colourCommand,
                :V verticalCommand,
-               :H horizontalCommand})
+               :H horizontalCommand,
+               :S showCommand})
 
+(defn processCommands [image]
+  (if (not (nil? image))
+    (let [[command & args] (read-line)]
+      (recur ((commands (keyword command) args image))))
+    )
+  )
 
+(defn -main [& args]
+   (processCommands []))
