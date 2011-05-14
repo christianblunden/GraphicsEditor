@@ -61,3 +61,7 @@
 (facts "about vertical command"
        (commands :V) => (exactly verticalCommand)
        (verticalCommand ["2" "1" "2" "G"] [[:O :O] [:O :O]]) => (just [[:O :G] [:O :G]]))
+
+(facts "about horizontal command"
+       (commands :H) => (exactly horizontalCommand)
+       (horizontalCommand ["2" "1" "2" "Y"] [[:O :O] [:O :O]]) => (just [[:O :O] [:Y :Y]]))
