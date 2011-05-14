@@ -64,5 +64,8 @@
     )
   )
 
+(defn space? [item]
+  (blank? (str item)))
+
 (defn -main [& args]
    (processCommands []))
