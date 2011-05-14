@@ -36,7 +36,12 @@
 (defn clearCommand [args image]
   (clearImage image))
 
+(defn colourCommand [args image]
+  (let [[x y colour] args]
+    (drawPixel image (read-string x) (read-string y) (keyword colour))))
+
 (def commands {:I createCommand,
-               :C clearCommand})
+               :C clearCommand,
+               :L colourCommand})
 
 

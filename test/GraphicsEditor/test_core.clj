@@ -52,3 +52,8 @@
 (facts "about clearing command"
        (commands :C) => (exactly clearCommand)
        (clearCommand [] [[:A :B] [:C :D]]) => (just [[:O :O] [:O :O]]))
+
+(facts "about colour command"
+       (commands :L) => (exactly colourCommand)
+       (colourCommand ["1" "1" "R"] [[:O :O] [:O :O]]) => (just [[:R :O] [:O :O]])
+       )
