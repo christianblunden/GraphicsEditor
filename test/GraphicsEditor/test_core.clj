@@ -46,7 +46,7 @@
 
 (facts "about create command"
        (commands :I) => (exactly createCommand)
-       (createCommand ["3" "2"]) => (just [[:O :O :O] [:O :O :O]])
+       (createCommand ["3" "2"] []) => (just [[:O :O :O] [:O :O :O]])
        )
 
 (facts "about clearing command"

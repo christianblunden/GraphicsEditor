@@ -29,10 +29,14 @@
 (defn displayImage [image]
   (map displayRow image))
 
-(defn createCommand [args]
+(defn createCommand [args image]
   (let [[x y] args]
     (createImage (read-string x) (read-string y))))
 
-(def commands {:I createCommand})
+(defn clearCommand [args image]
+  (clearImage image))
+
+(def commands {:I createCommand,
+               :C clearCommand})
 
 
