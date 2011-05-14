@@ -50,4 +50,5 @@
        )
 
 (facts "about clearing command"
-       (commands :C) => (exactly clearCommand))
+       (commands :C) => (exactly clearCommand)
+       (clearCommand [] [[:A :B] [:C :D]]) => (just [[:O :O] [:O :O]]))
