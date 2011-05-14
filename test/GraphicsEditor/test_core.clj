@@ -57,3 +57,6 @@
        (commands :L) => (exactly colourCommand)
        (colourCommand ["1" "1" "R"] [[:O :O] [:O :O]]) => (just [[:R :O] [:O :O]])
        )
+
+(facts "about vertical command"
+       (commands :V) => (exactly verticalCommand))
