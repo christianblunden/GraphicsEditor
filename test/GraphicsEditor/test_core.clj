@@ -59,4 +59,5 @@
        )
 
 (facts "about vertical command"
-       (commands :V) => (exactly verticalCommand))
+       (commands :V) => (exactly verticalCommand)
+       (verticalCommand ["2" "1" "2" "G"] [[:O :O] [:O :O]]) => (just [[:O :G] [:O :G]]))
