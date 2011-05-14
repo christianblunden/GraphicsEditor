@@ -40,5 +40,9 @@
 
 (facts "about showing an image"
        (let [image [[:A :B :C] [:D :E :F]]]
-         (displayRow (first image)) => "A B C"
-         ))
+         (displayRow (first image)) =>  (just "A B C")
+         (displayImage image) => (just ["A B C" "D E F"])
+                  ))
+
+(facts "about controller"
+       (commands :I) => (exactly createImage))

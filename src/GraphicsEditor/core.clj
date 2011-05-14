@@ -25,3 +25,8 @@
 
 (defn displayRow [row]
   (join " " (map name row)))
+
+(defn displayImage [image]
+  (map displayRow image))
+
+(def commands {:I createImage})
