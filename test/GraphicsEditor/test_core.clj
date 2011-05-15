@@ -1,5 +1,5 @@
-(ns GraphicsEditor.test-core
-  (:use GraphicsEditor.core
+(ns graphicseditor.test-core
+  (:use graphicseditor.core
 	clojure.test
 	midje.sweet))
 
@@ -69,8 +69,7 @@
 
 (facts "about show command"
        (commands :S) => (exactly showCommand)
-       (showCommand [] [[:A :B] [:C :D]]) => [[:A :B] [:C :D]]
-       )
+       (showCommand [] [[:A :B] [:C :D]]) => [[:A :B] [:C :D]])
 
 (facts "about terminate command"
        (commands :T) => (exactly terminateCommand)

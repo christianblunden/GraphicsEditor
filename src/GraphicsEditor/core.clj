@@ -1,6 +1,6 @@
-(ns GraphicsEditor.core
+(ns graphicseditor.core
   (:gen-class)
-  (:use clojure.string))
+  (:use [clojure.string :only [join blank?]]))
 
 (defn createRow [length]
   (vec (repeat length :O)))
