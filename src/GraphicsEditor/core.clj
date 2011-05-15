@@ -64,10 +64,12 @@
                :T terminateCommand})
 
 (defn processCommands [image]
-  (let [[rawcommand & rawargs] (read-line)
+  (if (not (nil? image))
+    (let [[rawcommand & rawargs] (read-line)
         args (remove blank? (map str rawargs))
         command (commands (keyword (str rawcommand)))]
     (recur (command args image))
+    )
     ))
 
 (defn -main [& args]
