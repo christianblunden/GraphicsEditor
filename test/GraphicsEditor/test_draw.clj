@@ -18,4 +18,23 @@
          (neighbours [0 0] [1 1]) => empty?
          ))
 
+(facts "about coordinate conversion"
+       (coord-of 1 1) => (just [0 0])
+       (coord-of 2 5) => (just [4 1]))
 
+(facts "about colour picker"
+       (let [image [[:O :O] [:O :A]]]
+         (colour-at? [0 0] image) => :O
+         (colour-at? [1 1] image) => :A
+         ))
+
+(facts "about image sizer"
+       (size-of [[:O :O] [:O :O]]) => (just [2 2])
+       (size-of [[:A :B :C] [:D :E :F]]) => (just [3 2])
+       )
+
+(facts "about fill"
+       (let [image [[:O :O] [:O :A]]]
+         (fill image 2 2 :C) => (just [[:O :O] [:O :C]])
+         )
+       )
