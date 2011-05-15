@@ -75,3 +75,6 @@
 (facts "about terminate command"
        (commands :T) => (exactly terminateCommand)
        (terminateCommand [] []) => nil?)
+
+(facts "about args"
+       (clean [\  \1 \  \2]) => (just ["1" "2"]))
