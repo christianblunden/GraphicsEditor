@@ -18,4 +18,4 @@
          (neighbours [0 0] [1 1]) => empty?
          ))
 
-(facts "about filler")
+
