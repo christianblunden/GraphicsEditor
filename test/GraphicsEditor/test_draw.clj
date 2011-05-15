@@ -9,5 +9,8 @@
          (valid? [0 0] [2 3]) => true
          (valid? [-1 0] [2 3]) => false
          (valid? [0 -1] [2 3]) => false
+         (valid? [3 3] [2 3]) => false
+         (valid? [2 4] [2 3]) => false
+         (valid? [2 3] [2 3]) => true
          (neighbours [0 0] [3 3]) => (just [1 0] [0 1])
          ))
