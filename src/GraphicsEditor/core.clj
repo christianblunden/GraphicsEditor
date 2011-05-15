@@ -46,7 +46,7 @@
     (drawVertical image (read-string x) (read-string y1) (read-string y2) (keyword colour))))
 
 (defn horizontalCommand [args image]
-  (let [[y x1 x2 colour] args]
+  (let [[x1 x2 y colour] args]
     (drawHorizontal image (read-string y) (read-string x1) (read-string x2) (keyword colour))))
 
 (defn showCommand [args image]

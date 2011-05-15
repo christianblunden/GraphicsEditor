@@ -64,7 +64,7 @@
 
 (facts "about horizontal command"
        (commands :H) => (exactly horizontalCommand)
-       (horizontalCommand ["2" "1" "2" "Y"] [[:O :O] [:O :O]]) => (just [[:O :O] [:Y :Y]]))
+       (horizontalCommand ["1" "2" "2" "Y"] [[:O :O] [:O :O]]) => (just [[:O :O] [:Y :Y]]))
 
 
 (facts "about show command"
