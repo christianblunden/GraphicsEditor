@@ -68,12 +68,10 @@
 
 (defn processCommands [image]
   (if (not (nil? image))
-    (let [[rawcommand & rawargs] (read-line)
-        args (clean rawargs)
-        command (commands (keyword (str rawcommand)))]
-    (recur (command args image))
-    )
-    ))
+    (let [[rawcommand & args] (read-line)
+          command (commands (keyword (str rawcommand)))]
+    (recur (command (clean args) image))
+    )))
 
 (defn -main [& args]
   (println "Ready... Please enter commands:")
