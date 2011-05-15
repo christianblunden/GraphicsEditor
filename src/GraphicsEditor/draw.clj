@@ -22,6 +22,9 @@
   (filter (fn [new-point] (valid? new-point size))
           (map #(map + point %) deltas)))
 
+(defn invalid-node [node visited colour image]
+  (or (contains? visited node) (not= colour (colour-at? node image))))
+
 (defn fill [image x y new-colour]
   (let [origin (coord-of x y)
         old-colour (colour-at? origin image)
@@ -29,8 +32,7 @@
     (loop [queue (conj clojure.lang.PersistentQueue/EMPTY origin)
            preds {origin nil}]
       (when-let [node (peek queue)]
-        (let [nbrs (remove
-                    (fn [n] (or (contains? preds n) (not= old-colour (colour-at? n image))))
+        (let [nbrs (remove #(invalid-node % preds old-colour image)
                            (neighbours node size))]
           (println node)
           (recur (into (pop queue) nbrs)
@@ -38,3 +40,4 @@
           )))
     image
     ))
+
