@@ -28,7 +28,7 @@
   (join " " (map name row)))
 
 (defn displayImage [image]
-  (map displayRow image))
+  (join "\n" (map displayRow image)))
 
 (defn createCommand [args image]
   (let [[x y] args]
@@ -50,7 +50,7 @@
     (drawHorizontal image (read-string y) (read-string x1) (read-string x2) (keyword colour))))
 
 (defn showCommand [args image]
-  (println "showing image")
+  (println (displayImage image))
   image)
 
 (defn terminateCommand [args image] nil)

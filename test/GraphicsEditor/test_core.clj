@@ -41,7 +41,7 @@
 (facts "about showing an image"
        (let [image [[:A :B :C] [:D :E :F]]]
          (displayRow (first image)) =>  (just "A B C")
-         (displayImage image) => (just ["A B C" "D E F"])
+         (displayImage image) =>  (just "A B C\nD E F")
                   ))
 
 (facts "about create command"
