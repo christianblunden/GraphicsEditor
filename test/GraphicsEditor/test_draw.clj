@@ -34,7 +34,7 @@
        )
 
 (facts "about fill"
-       (let [image [[:O :O] [:O :A]]]
-         (fill image 2 2 :C) => (just [[:O :O] [:O :C]])
+       (let [image [[:A :O :B] [:A :O :B] [:A :O :B]]]
+         (fill image 1 1 :C) => (just [[:C :O :B] [:C :O :B] [:C :O :B] ])
          )
        )
