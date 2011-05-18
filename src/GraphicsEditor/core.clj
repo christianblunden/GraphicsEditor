@@ -12,17 +12,20 @@
 (defn clearImage [image]
   (createImage (count (first image)) (count image)))
 
-(defn drawPixel [image x y colour]
-  (assoc-in image [(- y 1) (- x 1)] colour))
+(defn draw
+  ([image x y colour]
+     (assoc-in image [(- y 1) (- x 1)] colour))
+  ([image point colour]
+     (assoc-in image point colour)))
 
 (defn drawVertical [image x y1 y2 colour]
   (if (<= y1 y2)
-    (recur (drawPixel image x y1 colour) x (inc y1) y2 colour)
+    (recur (draw image x y1 colour) x (inc y1) y2 colour)
     image))
 
 (defn drawHorizontal [image y x1 x2 colour]
   (if (<= x1 x2)
-    (recur (drawPixel image x1 y colour) y (inc x1) x2 colour)
+    (recur (draw image x1 y colour) y (inc x1) x2 colour)
     image))
 
 (defn displayRow [row]
@@ -40,7 +43,7 @@
 
 (defn colourCommand [args image]
   (let [[x y colour] args]
-    (drawPixel image (read-string x) (read-string y) (keyword colour))))
+    (draw image (read-string x) (read-string y) (keyword colour))))
 
 (defn verticalCommand [args image]
   (let [[x y1 y2 colour] args]

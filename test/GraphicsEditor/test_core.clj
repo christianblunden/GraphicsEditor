@@ -21,10 +21,8 @@
 
 (facts "about drawing a pixel on image"
        (let [image [[:O :O] [:O :O]]]
-         (drawPixel image 2 2 :C) => (just [[:O :O] [:O :C]])
-         (drawPixel image 1 2 :R) => (just [[:O :O] [:R :O]])
-         (drawPixel image 2 1 :Z) => (just [[:O :Z] [:O :O]])
-         ))
+         (draw image 2 2 :C) => (just [[:O :O] [:O :C]])
+         (draw image [0 0] :R) => (just [[:R :O] [:O :O]])))
 
 (facts "about drawing vertical line on image"
        (let [image [[:O :O] [:O :O] [:O :O] [:O :O]]]

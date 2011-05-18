@@ -1,5 +1,4 @@
-(ns graphicseditor.draw
-  (:use graphicseditor.core))
+(ns graphicseditor.draw)
 
 (def deltas [[-1 0] [1 0] [0 -1] [0 1]])
 
@@ -12,8 +11,7 @@
 (defn valid? [point size]
   (let [[x y] point
         [max-x max-y] size]
-    (and (< -1 x max-x) (< -1 y max-y))
-    ))
+    (and (< -1 x max-x) (< -1 y max-y))))
 
 (defn colour-at? [point image]
   (get-in image point))
@@ -23,7 +21,8 @@
           (map #(map + point %) deltas)))
 
 (defn invalid-node [node visited colour image]
-  (or (contains? visited node) (not= colour (colour-at? node image))))
+  (or (contains? visited node)
+      (not= colour (colour-at? node image))))
 
 (defn fill [image x y new-colour]
   (let [origin (coord-of x y)
@@ -39,5 +38,4 @@
           (recur (into (pop queue) nbrs)
                  (reduce #(assoc %1 %2 node) visited nbrs))
           )))
-    @new-image
-    ))
+    @new-image))
