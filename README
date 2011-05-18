@@ -1,13 +1,35 @@
 # GraphicsEditor
 
-FIXME: write description
+Code submission for Forward Internet
 
 ## Usage
 
-FIXME: write
+From terminal:
+'lein midje' to run the tests
+'lein uberjar' to create package
 
-## License
+To execute and run
+'java -jar GraphicsEditor-1.0.0-SNAPSHOT-standalone.jar'
 
-Copyright (C) 2011 FIXME
+enter commands as per requirements:
+I M N       (creates an MxN image)
+L X Y C     (colours a single pixel at coordinate X Y)
+C           (clears image)
+V X Y1 Y2 C (draws vertical line on col X between rows Y1 Y2)
+H X1 X2 Y C (draws horiz. line on row Y between cols X1 X2)
+F X Y C     (fills region identified by colour at X Y)
+S           (show image)
+T           (terminate)
+
+Known issues: Error checking is not robust due to time restrictions.
+There is checking on the initial create command to check if values are between 1 & 250 but nothing futher.
+
+Did not have time to investigate how to better test the process commands funtion within the re-curse loop.
+
+Region fill alorithm is a simple brute force flood-fill using persistent queue & loop.
+
+## License -> Go ahead and share it!!
+
+Copyright (C) 2011 Christian Blunden
 
 Distributed under the Eclipse Public License, the same as Clojure.
