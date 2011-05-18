@@ -1,6 +1,7 @@
 (ns graphicseditor.core
   (:gen-class)
-  (:use [clojure.string :only [join blank?]]))
+  (:use [clojure.string :only [join blank?]]
+        graphicseditor.draw))
 
 (defn createRow [length]
   (vec (repeat length :O)))
@@ -55,12 +56,18 @@
 
 (defn terminateCommand [args image] nil)
 
+(defn fillCommand [args image]
+  (let [[x y colour] args]
+    (fill image (read-string x) (read-string y) (keyword colour))
+    ))
+
 (def commands {:I createCommand,
                :C clearCommand,
                :L colourCommand,
                :V verticalCommand,
                :H horizontalCommand,
                :S showCommand,
+               :F fillCommand,
                :T terminateCommand})
 
 (defn clean [args]

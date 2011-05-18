@@ -75,5 +75,9 @@
        (commands :T) => (exactly terminateCommand)
        (terminateCommand [] []) => nil?)
 
+(facts "about fill command"
+       (commands :F) => (exactly fillCommand)
+       (fillCommand ["1" "2" "R"] [[:O :O] [:O :O]]) => (just [[:R :R] [:R :R]]))
+
 (facts "about args"
        (clean [\  \1 \  \2]) => (just ["1" "2"]))
