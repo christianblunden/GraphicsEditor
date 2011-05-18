@@ -47,6 +47,11 @@
        (createCommand ["3" "2"] []) => (just [[:O :O :O] [:O :O :O]])
        )
 
+(facts "about out of bounds create command"
+       (createCommand ["0" "2"] []) => nil?
+       (provided
+        (println "Image size must be between 1 and 250") => nil))
+
 (facts "about clearing command"
        (commands :C) => (exactly clearCommand)
        (clearCommand [] [[:A :B] [:C :D]]) => (just [[:O :O] [:O :O]]))
@@ -77,5 +82,7 @@
        (commands :F) => (exactly fillCommand)
        (fillCommand ["1" "2" "R"] [[:O :O] [:O :O]]) => (just [[:R :R] [:R :R]]))
 
-(facts "about args"
-       (clean [\  \1 \  \2]) => (just ["1" "2"]))
+(fact "about getting input"
+      (get-input) => (just ["V" "10" "250" "2" "C"])
+      (provided
+       (read-line) => "V 10 250 2 C"))

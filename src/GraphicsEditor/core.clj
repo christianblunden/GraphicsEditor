@@ -1,6 +1,6 @@
 (ns graphicseditor.core
   (:gen-class)
-  (:use [clojure.string :only [join blank?]]
+  (:use [clojure.string :only [join blank? upper-case split]]
         graphicseditor.draw))
 
 (defn createRow [length]
@@ -35,8 +35,13 @@
   (join "\n" (map displayRow image)))
 
 (defn createCommand [args image]
-  (let [[x y] args]
-    (createImage (read-string x) (read-string y))))
+  (let [[x y] args
+        cols (read-string x)
+        rows (read-string y)]
+    (if (and (< 0 cols 251) (< 0 rows 251))
+      (createImage cols rows)
+      (println "Image size must be between 1 and 250"))
+    ))
 
 (defn clearCommand [args image]
   (clearImage image))
@@ -76,11 +81,16 @@
 (defn clean [args]
   (remove blank? (map str args)))
 
+(defn get-input []
+  (let [input (upper-case (read-line))]
+    (split input #"\s")))
+
 (defn processCommands [image]
   (if (not (nil? image))
-    (let [[rawcommand & args] (read-line)
-          command (commands (keyword (str rawcommand)))]
-    (recur (command (clean args) image))
+    (let [input (get-input)
+          [raw-command & args] input
+          command (commands (keyword raw-command))]
+      (recur (command args image))
     )))
 
 (defn -main [& args]
