@@ -27,15 +27,17 @@
 (defn fill [image x y new-colour]
   (let [origin (coord-of x y)
         old-colour (colour-at? origin image)
-        size (size-of image)
-        new-image (atom image)]
+        size (size-of image)]
     (loop [queue (conj clojure.lang.PersistentQueue/EMPTY origin)
-           visited {origin nil}]
+           visited {origin nil}
+           new-image image]
       (when-let [node (peek queue)]
         (let [nbrs (remove #(invalid-node % visited old-colour image)
                            (neighbours node size))]
-          (reset! new-image (assoc-in @new-image node new-colour))
-          (recur (into (pop queue) nbrs)
-                 (reduce #(assoc %1 %2 node) visited nbrs))
+          (if (and (empty? nbrs) (empty? (pop queue)))
+            (assoc-in new-image node new-colour)
+            (recur (into (pop queue) nbrs)
+                 (reduce #(assoc %1 %2 node) visited nbrs)
+                 (assoc-in new-image node new-colour)))
           )))
-    @new-image))
+))
