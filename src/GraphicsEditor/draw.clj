@@ -33,11 +33,12 @@
            new-image image]
       (when-let [node (peek queue)]
         (let [nbrs (remove #(invalid-node % visited old-colour image)
-                           (neighbours node size))]
+                           (neighbours node size))
+              temp-image (assoc-in new-image node new-colour)]
           (if (and (empty? nbrs) (empty? (pop queue)))
-            (assoc-in new-image node new-colour)
+            temp-image
             (recur (into (pop queue) nbrs)
                  (reduce #(assoc %1 %2 node) visited nbrs)
-                 (assoc-in new-image node new-colour)))
+                 temp-image))
           )))
 ))
