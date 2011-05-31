@@ -39,3 +39,8 @@
          (fill image 2 1 :C) => (just [[:A :C :B] [:A :C :B] [:A :C :B]])
          )
        )
+
+(facts "about gradient-fill"
+       (let [image [[:O :O] [:O :O]]]
+         (gradient-fill image 1 1 [:A :A :A :A]) => (just [[:A :A] [:A :A]])
+         ))
